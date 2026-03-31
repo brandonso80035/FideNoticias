@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - FideNoticias</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+        
+        nav {
+            background: #1a3a6b;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 70px);
+        }
+        
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 350px;
+        }
+        
+        h2 {
+            margin-bottom: 1.5rem;
+            color: #1a3a6b;
+            border-bottom: 2px solid #4da6ff;
+            padding-bottom: 0.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.3rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0.7rem;
+            background: #1a3a6b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #16325a;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 0.6rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 0.6rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        .link a {
+            color: #1a3a6b;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>📰 FideNoticias</nav>
+
+    <div class="container">
+        <div class="card">
+
+            <h2>Iniciar sesión</h2>
+
+            <div th:if="${mensaje}" class="success" th:text="${mensaje}"></div>
+            <div th:if="${error}" class="error" th:text="${error}"></div>
+
+            <form th:action="@{/login}" method="post">
+
+                <label>Correo</label>
+                <input type="email" name="correo" required>
+
+                <label>Contraseña</label>
+                <input type="password" name="contrasena" required>
+
+                <button type="submit">Ingresar</button>
+
+            </form>
+
+            <div class="link">
+                <a th:href="@{/registro}">¿No tienes cuenta? Registrarse</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
